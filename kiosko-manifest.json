@@ -1,0 +1,435 @@
+{
+  "manifest": 1,
+  "id": "batteries",
+  "package": "kiosko-plugin-batteries",
+  "name": {
+    "en": "Batteries",
+    "es": "Baterías",
+    "de": "Akkus",
+    "zh-Hans": "电池",
+    "zh-Hant": "電池"
+  },
+  "version": "0.1.0",
+  "description": {
+    "en": "The battery of your gadgets on the panel: Bluetooth headphones, mouse, keyboard, game controller, the laptop and the phone, with a warning before one runs out.",
+    "es": "La batería de tus cacharros en el panel: auriculares Bluetooth, ratón, teclado, mando, el portátil y el móvil, con un aviso antes de que uno se quede sin batería.",
+    "de": "Der Akku deiner Geräte auf dem Panel: Bluetooth-Kopfhörer, Maus, Tastatur, Controller, der Laptop und das Handy, mit einer Warnung, bevor einer leer ist.",
+    "zh-Hans": "在副屏上查看各种设备的电量：蓝牙耳机、鼠标、键盘、手柄、笔记本电脑和手机，快没电前提醒你。",
+    "zh-Hant": "在面板上查看各種裝置的電量：藍牙耳機、滑鼠、鍵盤、手把、筆電和手機，快沒電前提醒你。"
+  },
+  "author": "Loksly",
+  "license": "MIT",
+  "homepage": "https://github.com/kiosko-lcd/kiosko-plugin-batteries#readme",
+  "repository": "https://github.com/kiosko-lcd/kiosko-plugin-batteries",
+  "icon": "battery-medium",
+  "sdk": "^0.2.0",
+  "platforms": [
+    "linux",
+    "darwin",
+    "win32"
+  ],
+  "languages": [
+    "en",
+    "es",
+    "de",
+    "zh-Hant",
+    "zh-Hans"
+  ],
+  "categories": [
+    "system"
+  ],
+  "tags": [
+    "battery",
+    "bluetooth"
+  ],
+  "permissions": {
+    "exec": [
+      "busctl",
+      "upower",
+      "powershell",
+      "ioreg",
+      "pmset",
+      "system_profiler"
+    ],
+    "files": [
+      "/sys/class/power_supply"
+    ],
+    "devices": [
+      "upower",
+      "bluetooth",
+      "kdeconnect"
+    ]
+  },
+  "riskyOptions": [],
+  "requires": [],
+  "optional": [],
+  "widgets": [
+    {
+      "type": "batteries/list",
+      "name": {
+        "en": "Batteries",
+        "es": "Baterías",
+        "de": "Akkus",
+        "zh-Hans": "电池",
+        "zh-Hant": "電池"
+      },
+      "description": {
+        "en": "Every device with a battery, one per line: the ones running low first, in amber and red, with a bolt on those charging. In a small tile, the lowest one.",
+        "es": "Cada dispositivo con batería, uno por línea: primero los que se están quedando sin batería, en ámbar y rojo, con un rayo en los que cargan. En una tesela pequeña, el más bajo.",
+        "de": "Jedes Gerät mit Akku, eines pro Zeile: die fast leeren zuerst, in Gelb und Rot, mit einem Blitz bei denen, die laden. In einer kleinen Kachel das niedrigste.",
+        "zh-Hans": "每个带电池的设备各占一行：电量低的排在最前，以琥珀色和红色显示，正在充电的带闪电标志。小格子里只显示电量最低的那个。",
+        "zh-Hant": "每個有電池的裝置各佔一行：電量低的排在最前面，以琥珀色和紅色顯示，正在充電的帶閃電標誌。小方格裡只顯示電量最低的那個。"
+      },
+      "icon": "battery-medium",
+      "category": "system",
+      "tags": [
+        "battery",
+        "bluetooth"
+      ],
+      "size": {
+        "min": {
+          "w": 140,
+          "h": 24
+        },
+        "preferred": {
+          "w": 480,
+          "h": 240
+        }
+      },
+      "chrome": "card",
+      "sources": [
+        "batteries/devices"
+      ],
+      "options": {
+        "default": {
+          "rows": 0,
+          "showBar": true
+        },
+        "x-ui": {},
+        "type": "object",
+        "properties": {
+          "rows": {
+            "title": "Rows",
+            "description": "0 = as many as fit. A number shows that many, in rows of a readable size (fewer when the tile is too small for them); the rest are counted in \"+N more\".",
+            "default": 0,
+            "x-ui": {
+              "label": {
+                "en": "Rows",
+                "es": "Filas",
+                "de": "Zeilen",
+                "zh-Hant": "列數",
+                "zh-Hans": "行数"
+              },
+              "help": {
+                "en": "0 = as many as fit. A number shows that many, in rows of a readable size (fewer when the tile is too small for them); the rest are counted in \"+N more\".",
+                "es": "0 = las que quepan. Con un número se ven esas, en filas de un tamaño legible (menos si la tesela no da para ellas); el resto se cuenta en «+N más».",
+                "de": "0 = so viele, wie passen. Eine Zahl zeigt so viele, in Zeilen lesbarer Größe (weniger, wenn die Kachel dafür zu klein ist); der Rest wird als „+N weitere“ gezählt.",
+                "zh-Hant": "0 = 盡量放滿。填數字則顯示該數量，並以易讀的大小排列（方格太小時會減少）；其餘的計入「還有 N 個」。",
+                "zh-Hans": "0 = 尽量放满。填数字则显示该数量，并以易读的大小排列（格子太小时会减少）；其余的计入“还有 N 个”。"
+              }
+            },
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 30
+          },
+          "showBar": {
+            "title": "Show the level bar",
+            "default": true,
+            "x-ui": {
+              "label": {
+                "en": "Show the level bar",
+                "es": "Mostrar la barra de nivel",
+                "de": "Füllstandsbalken zeigen",
+                "zh-Hans": "显示电量条",
+                "zh-Hant": "顯示電量條"
+              }
+            },
+            "type": "boolean"
+          }
+        }
+      },
+      "screenshot": "docs/list.png",
+      "animated": false,
+      "urgent": false
+    },
+    {
+      "type": "batteries/low",
+      "name": {
+        "en": "Low batteries",
+        "es": "Baterías bajas",
+        "de": "Schwache Akkus",
+        "zh-Hans": "低电量",
+        "zh-Hant": "低電量"
+      },
+      "description": {
+        "en": "Only the devices that need charging, or a calm \"All charged\": for a corner of a page. Takes its tile while one is almost empty.",
+        "es": "Solo los dispositivos que hay que cargar, o un tranquilo «Todo cargado»: para una esquina de la página. Se queda la tesela mientras uno esté casi vacío.",
+        "de": "Nur die Geräte, die geladen werden müssen, oder ein ruhiges „Alles geladen“: für eine Ecke der Seite. Behält die Kachel, solange eines fast leer ist.",
+        "zh-Hans": "只显示需要充电的设备，或安静的“电量充足”：适合放在页面一角。有设备电量告急时会占用其格子。",
+        "zh-Hant": "只顯示需要充電的裝置，或安靜的「電量充足」：適合放在頁面一角。有裝置電量告急時會佔用其方格。"
+      },
+      "icon": "battery-low",
+      "category": "system",
+      "tags": [
+        "battery",
+        "bluetooth"
+      ],
+      "size": {
+        "min": {
+          "w": 120,
+          "h": 24
+        },
+        "preferred": {
+          "w": 320,
+          "h": 110
+        }
+      },
+      "chrome": "card",
+      "sources": [
+        "batteries/devices"
+      ],
+      "options": {
+        "default": {
+          "rows": 0
+        },
+        "x-ui": {},
+        "type": "object",
+        "properties": {
+          "rows": {
+            "title": "Rows",
+            "description": "0 = as many as fit. A number shows that many, in rows of a readable size (fewer when the tile is too small for them); the rest are counted in \"+N more\".",
+            "default": 0,
+            "x-ui": {
+              "label": {
+                "en": "Rows",
+                "es": "Filas",
+                "de": "Zeilen",
+                "zh-Hant": "列數",
+                "zh-Hans": "行数"
+              },
+              "help": {
+                "en": "0 = as many as fit. A number shows that many, in rows of a readable size (fewer when the tile is too small for them); the rest are counted in \"+N more\".",
+                "es": "0 = las que quepan. Con un número se ven esas, en filas de un tamaño legible (menos si la tesela no da para ellas); el resto se cuenta en «+N más».",
+                "de": "0 = so viele, wie passen. Eine Zahl zeigt so viele, in Zeilen lesbarer Größe (weniger, wenn die Kachel dafür zu klein ist); der Rest wird als „+N weitere“ gezählt.",
+                "zh-Hant": "0 = 盡量放滿。填數字則顯示該數量，並以易讀的大小排列（方格太小時會減少）；其餘的計入「還有 N 個」。",
+                "zh-Hans": "0 = 尽量放满。填数字则显示该数量，并以易读的大小排列（格子太小时会减少）；其余的计入“还有 N 个”。"
+              }
+            },
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 30
+          }
+        }
+      },
+      "screenshot": "docs/low.png",
+      "animated": false,
+      "urgent": true
+    }
+  ],
+  "sources": [
+    {
+      "type": "batteries/devices",
+      "name": {
+        "en": "Batteries",
+        "es": "Baterías",
+        "de": "Akkus",
+        "zh-Hans": "电池",
+        "zh-Hant": "電池"
+      },
+      "description": {
+        "en": "The battery of your Bluetooth headphones, mouse, keyboard, controllers, laptop and phone, from what the system already knows: UPower, BlueZ and the kernel on Linux, KDE Connect for the phone, PowerShell on Windows, ioreg, pmset and system_profiler on macOS. Nothing to set up.",
+        "es": "La batería de tus auriculares Bluetooth, ratón, teclado, mandos, portátil y móvil, a partir de lo que el sistema ya sabe: UPower, BlueZ y el kernel en Linux, KDE Connect para el móvil, PowerShell en Windows, ioreg, pmset y system_profiler en macOS. Nada que configurar.",
+        "de": "Der Akku deiner Bluetooth-Kopfhörer, Maus, Tastatur, Controller, deines Laptops und Handys, aus dem, was das System schon weiß: UPower, BlueZ und der Kernel unter Linux, KDE Connect fürs Handy, PowerShell unter Windows, ioreg, pmset und system_profiler unter macOS. Nichts einzurichten.",
+        "zh-Hans": "蓝牙耳机、鼠标、键盘、手柄、笔记本电脑和手机的电量，来自系统已有的信息：Linux 上的 UPower、BlueZ 和内核，手机用 KDE Connect，Windows 上的 PowerShell，macOS 上的 ioreg、pmset 和 system_profiler。无需设置。",
+        "zh-Hant": "藍牙耳機、滑鼠、鍵盤、手把、筆電和手機的電量，來自系統已有的資訊：Linux 上的 UPower、BlueZ 和核心，手機用 KDE Connect，Windows 上的 PowerShell，macOS 上的 ioreg、pmset 和 system_profiler。無需設定。"
+      },
+      "polled": true,
+      "intervalMs": 60000,
+      "options": {
+        "default": {
+          "levelWarn": 15,
+          "levelAlert": 5,
+          "showAlerts": true,
+          "devices": [],
+          "names": {},
+          "readers": []
+        },
+        "x-ui": {},
+        "type": "object",
+        "properties": {
+          "levelWarn": {
+            "title": "Low at",
+            "description": "Under this level a device turns amber and goes to the top of the list.",
+            "default": 15,
+            "x-ui": {
+              "label": {
+                "en": "Low at",
+                "es": "Baja a partir de",
+                "de": "Niedrig ab",
+                "zh-Hans": "低电量阈值",
+                "zh-Hant": "低電量門檻"
+              },
+              "help": {
+                "en": "Under this level a device turns amber and goes to the top of the list.",
+                "es": "Por debajo de este nivel un dispositivo se pone ámbar y sube al principio de la lista.",
+                "de": "Unter diesem Stand wird ein Gerät gelb und rückt an den Anfang der Liste.",
+                "zh-Hans": "低于此电量时，设备显示为琥珀色并排到列表最前。",
+                "zh-Hant": "低於此電量時，裝置顯示為琥珀色並排到清單最前面。"
+              },
+              "unit": "%"
+            },
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "levelAlert": {
+            "title": "Almost empty at",
+            "description": "Under this level a device turns red and, if full-screen alerts are on, shows one once per discharge.",
+            "default": 5,
+            "x-ui": {
+              "label": {
+                "en": "Almost empty at",
+                "es": "Casi vacía a partir de",
+                "de": "Fast leer ab",
+                "zh-Hans": "电量告急阈值",
+                "zh-Hant": "電量告急門檻"
+              },
+              "help": {
+                "en": "Under this level a device turns red and, if full-screen alerts are on, shows one once per discharge.",
+                "es": "Por debajo de este nivel un dispositivo se pone rojo y, si los avisos a pantalla completa están activados, muestra uno una vez por descarga.",
+                "de": "Unter diesem Stand wird ein Gerät rot und zeigt, wenn Vollbild-Warnungen an sind, einmal pro Entladung eine.",
+                "zh-Hans": "低于此电量时，设备显示为红色；若开启全屏提醒，每次放电只提醒一次。",
+                "zh-Hant": "低於此電量時，裝置顯示為紅色；若開啟全螢幕提醒，每次放電只提醒一次。"
+              },
+              "unit": "%"
+            },
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "showAlerts": {
+            "title": "Full-screen alert when almost empty",
+            "default": true,
+            "x-ui": {
+              "label": {
+                "en": "Full-screen alert when almost empty",
+                "es": "Aviso a pantalla completa cuando esté casi vacía",
+                "de": "Vollbild-Warnung, wenn fast leer",
+                "zh-Hans": "电量告急时全屏提醒",
+                "zh-Hant": "電量告急時全螢幕提醒"
+              }
+            },
+            "type": "boolean"
+          },
+          "devices": {
+            "title": "Devices",
+            "description": "Which devices to show, by name or kind: mouse, keyboard, headset, gamepad, phone, laptop; !Xbox* leaves one out. Empty: all.",
+            "default": [],
+            "x-ui": {
+              "label": {
+                "en": "Devices",
+                "es": "Dispositivos",
+                "de": "Geräte",
+                "zh-Hans": "设备",
+                "zh-Hant": "裝置"
+              },
+              "help": {
+                "en": "Which devices to show, by name or kind: mouse, keyboard, headset, gamepad, phone, laptop; !Xbox* leaves one out. Empty: all.",
+                "es": "Qué dispositivos mostrar, por nombre o tipo: mouse, keyboard, headset, gamepad, phone, laptop; !Xbox* quita uno. Vacío: todos.",
+                "de": "Welche Geräte gezeigt werden, nach Name oder Art: mouse, keyboard, headset, gamepad, phone, laptop; !Xbox* lässt eines weg. Leer: alle.",
+                "zh-Hans": "按名称或类型选择要显示的设备：mouse、keyboard、headset、gamepad、phone、laptop；用 !Xbox* 排除某个。留空：全部。",
+                "zh-Hant": "依名稱或類型選擇要顯示的裝置：mouse、keyboard、headset、gamepad、phone、laptop；用 !Xbox* 排除某個。留空：全部。"
+              },
+              "widget": "filter",
+              "choices": {
+                "source": "batteries/devices",
+                "list": "devices"
+              }
+            },
+            "type": "array",
+            "items": {
+              "default": "",
+              "x-ui": {
+                "placeholder": "name, group/*, !old-*",
+                "choices": {
+                  "source": "batteries/devices",
+                  "list": "devices"
+                }
+              },
+              "type": "string"
+            },
+            "x-filter": true
+          },
+          "names": {
+            "title": "Names",
+            "description": "Your own names: the name a reader gives (or the device key) → the name to show. \"MX Master 3S\" → \"Mouse\".",
+            "default": {},
+            "x-ui": {
+              "label": {
+                "en": "Names",
+                "es": "Nombres",
+                "de": "Namen",
+                "zh-Hans": "名称",
+                "zh-Hant": "名稱"
+              },
+              "help": {
+                "en": "Your own names: the name a reader gives (or the device key) → the name to show. \"MX Master 3S\" → \"Mouse\".",
+                "es": "Tus nombres: el que da el sistema (o la clave del dispositivo) → el que mostrar. \"MX Master 3S\" → \"Ratón\".",
+                "de": "Eigene Namen: der Name vom System (oder der Geräteschlüssel) → der angezeigte Name. \"MX Master 3S\" → \"Maus\".",
+                "zh-Hans": "自定义名称：系统给出的名称（或设备键）→ 要显示的名称。\"MX Master 3S\" → \"鼠标\"。",
+                "zh-Hant": "自訂名稱：系統給的名稱（或裝置鍵）→ 要顯示的名稱。\"MX Master 3S\" → \"滑鼠\"。"
+              },
+              "advanced": true
+            },
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "readers": {
+            "title": "Readers",
+            "description": "Which to ask: upower, bluez, sysfs, kdeconnect (Linux), windows, macos; !sysfs leaves one out. Empty: every one this system has.",
+            "default": [],
+            "x-ui": {
+              "label": {
+                "en": "Readers",
+                "es": "Lectores",
+                "de": "Quellen",
+                "zh-Hans": "读取方式",
+                "zh-Hant": "讀取方式"
+              },
+              "help": {
+                "en": "Which to ask: upower, bluez, sysfs, kdeconnect (Linux), windows, macos; !sysfs leaves one out. Empty: every one this system has.",
+                "es": "A cuáles preguntar: upower, bluez, sysfs, kdeconnect (Linux), windows, macos; !sysfs quita uno. Vacío: todos los que haya en este sistema.",
+                "de": "Welche gefragt werden: upower, bluez, sysfs, kdeconnect (Linux), windows, macos; !sysfs lässt eine weg. Leer: alle, die dieses System hat.",
+                "zh-Hans": "要读取哪些：upower、bluez、sysfs、kdeconnect（Linux）、windows、macos；用 !sysfs 排除某个。留空：本系统有的全部。",
+                "zh-Hant": "要讀取哪些：upower、bluez、sysfs、kdeconnect（Linux）、windows、macos；用 !sysfs 排除某個。留空：本系統有的全部。"
+              },
+              "advanced": true,
+              "widget": "filter"
+            },
+            "type": "array",
+            "items": {
+              "default": "",
+              "x-ui": {
+                "placeholder": "name, group/*, !old-*"
+              },
+              "type": "string"
+            },
+            "x-filter": true
+          }
+        }
+      }
+    }
+  ],
+  "interludes": [],
+  "templates": [],
+  "support": {
+    "issues": "https://github.com/kiosko-lcd/kiosko-plugin-batteries/issues",
+    "docs": "https://github.com/kiosko-lcd/kiosko-plugin-batteries#readme"
+  },
+  "resources": {
+    "memoryMb": 10,
+    "cpu": "low"
+  }
+}

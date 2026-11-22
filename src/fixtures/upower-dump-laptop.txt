@@ -1,0 +1,114 @@
+Device: /org/freedesktop/UPower/devices/line_power_AC
+  native-path:          AC
+  power supply:         yes
+  updated:              Sun Nov 22 09:58:01 2026 (119 seconds ago)
+  has history:          no
+  has statistics:       no
+  line-power
+    warning-level:       none
+    online:              yes
+    icon-name:          'ac-adapter-symbolic'
+
+Device: /org/freedesktop/UPower/devices/battery_BAT0
+  native-path:          BAT0
+  vendor:               SMP
+  model:                5B10W51867
+  serial:               1234
+  power supply:         yes
+  updated:              Sun Nov 22 09:59:47 2026 (13 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  battery
+    present:             yes
+    rechargeable:        yes
+    state:               charging
+    warning-level:       none
+    energy:              38.46 Wh
+    energy-empty:        0 Wh
+    energy-full:         57.4 Wh
+    energy-full-design:  57 Wh
+    voltage-min-design:  11.52 V
+    capacity-level:      Normal
+    energy-rate:         12.304 W
+    voltage:             12.913 V
+    charge-cycles:       N/A
+    time to full:        1.5 hours
+    percentage:          67%
+    capacity:            100%
+    technology:          lithium-polymer
+    charge-start-threshold:        0%
+    charge-end-threshold:          100%
+    charge-threshold-enabled:      no
+    charge-threshold-supported:    no
+    icon-name:          'battery-good-charging-symbolic'
+
+Device: /org/freedesktop/UPower/devices/mouse_hidpp_battery_0
+  native-path:          hidpp_battery_0
+  vendor:               Logitech
+  model:                MX Master 3S
+  serial:               4e-8f-21-a7
+  power supply:         no
+  updated:              Sun Nov 22 09:59:12 2026 (48 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  mouse
+    present:             yes
+    rechargeable:        yes
+    state:               discharging
+    warning-level:       none
+    percentage:          12%
+    icon-name:          'battery-caution-symbolic'
+
+Device: /org/freedesktop/UPower/devices/keyboard_dev_DC_2C_26_44_55_66
+  native-path:          /org/bluez/hci0/dev_DC_2C_26_44_55_66
+  model:                Keychron K3
+  serial:               DC:2C:26:44:55:66
+  power supply:         no
+  updated:              Sun Nov 22 09:57:30 2026 (150 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  keyboard
+    present:             yes
+    rechargeable:        yes
+    state:               discharging
+    warning-level:       none
+    battery-level:       low
+    percentage:          10% (should be ignored)
+    icon-name:          'battery-low-symbolic'
+
+Device: /org/freedesktop/UPower/devices/headset_dev_AC_80_0A_11_22_33
+  native-path:          /org/bluez/hci0/dev_AC_80_0A_11_22_33
+  model:                Sony headphones
+  serial:               AC:80:0A:11:22:33
+  power supply:         no
+  updated:              Sun Nov 22 09:59:58 2026 (2 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  headset
+    warning-level:       none
+    percentage:          70%
+    icon-name:          'battery-full-symbolic'
+
+Device: /org/freedesktop/UPower/devices/DisplayDevice
+  power supply:         yes
+  updated:              Sun Nov 22 09:59:47 2026 (13 seconds ago)
+  has history:          no
+  has statistics:       no
+  battery
+    present:             yes
+    state:               charging
+    warning-level:       none
+    energy:              38.46 Wh
+    energy-full:         57.4 Wh
+    energy-rate:         12.304 W
+    charge-cycles:       N/A
+    time to full:        1.5 hours
+    percentage:          67%
+    icon-name:          'battery-good-charging-symbolic'
+
+Daemon:
+  daemon-version:  1.91.1
+  on-battery:      no
+  lid-is-closed:   no
+  lid-is-present:  yes
+  critical-action: PowerOff

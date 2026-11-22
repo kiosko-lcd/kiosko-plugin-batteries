@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>BatteryPercent</key>
+		<integer>12</integer>
+		<key>DeviceAddress</key>
+		<string>a4-83-e7-12-34-56</string>
+		<key>IOClass</key>
+		<string>AppleDeviceManagementHIDEventService</string>
+		<key>Product</key>
+		<string>Magic Mouse</string>
+		<key>Transport</key>
+		<string>Bluetooth</string>
+		<key>VendorID</key>
+		<integer>76</integer>
+	</dict>
+	<dict>
+		<key>BatteryPercent</key>
+		<integer>58</integer>
+		<key>IOClass</key>
+		<string>AppleDeviceManagementHIDEventService</string>
+		<key>Product</key>
+		<string>Magic Keyboard with Touch ID</string>
+		<key>Transport</key>
+		<string>Bluetooth</string>
+	</dict>
+	<dict>
+		<key>BatteryPercent</key>
+		<integer>58</integer>
+		<key>IOClass</key>
+		<string>AppleDeviceManagementHIDEventService</string>
+		<key>Product</key>
+		<string>Magic Keyboard with Touch ID</string>
+		<key>Transport</key>
+		<string>Bluetooth</string>
+	</dict>
+</array>
+</plist>

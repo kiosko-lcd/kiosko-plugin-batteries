@@ -1,0 +1,79 @@
+{
+  "name": "kiosko-plugin-batteries",
+  "version": "0.1.0",
+  "description": "The battery of your gadgets on a small USB LCD panel: Bluetooth headphones, mouse, keyboard, game controller, the laptop and the phone, with a warning before one runs out.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Loksly <info@kioskolcd.dev> (https://kioskolcd.dev)",
+  "keywords": [
+    "kiosko",
+    "kiosko-plugin",
+    "lcd",
+    "widgets",
+    "system",
+    "battery",
+    "bluetooth",
+    "upower",
+    "kdeconnect"
+  ],
+  "homepage": "https://github.com/kiosko-lcd/kiosko-plugin-batteries#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiosko-lcd/kiosko-plugin-batteries.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kiosko-lcd/kiosko-plugin-batteries/issues"
+  },
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "kiosko": {
+    "plugin": "./dist/index.js",
+    "id": "batteries",
+    "sdk": "^0.2.0",
+    "languages": [
+      "en",
+      "es",
+      "de",
+      "zh-Hant",
+      "zh-Hans"
+    ],
+    "manifest": "./kiosko-manifest.json"
+  },
+  "os": [
+    "linux",
+    "darwin",
+    "win32"
+  ],
+  "files": [
+    "dist",
+    "docs",
+    "kiosko-manifest.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --conditions=source --test \"src/**/*.test.ts\"",
+    "check": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@kiosko/sdk": "^0.2.0"
+  },
+  "devDependencies": {
+    "@kiosko/core": "^0.2.8",
+    "@kiosko/sdk": "^0.2.8",
+    "@loksly/lcd-canvas-kit": "^0.2.0",
+    "@napi-rs/canvas": "^1.0.10",
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.3"
+  }
+}
